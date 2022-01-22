@@ -1,0 +1,39 @@
+const Koa = require('koa')
+<% if (middleware.koaStatic) { %>
+    const path = require('path')
+<% } %>
+<% if (middleware.koaStatic) { %>
+    const static = require('koa-static')
+<% } %>
+<% if (middleware.koaViews) { %>
+    const static = require('koa-views')
+<% } %>
+<% if (middleware.koaBody) { %>
+    const bodyParser = require('koa-bodyparser');
+<% } %>
+<% if (middleware.koaRouter) { %>
+    const homeRoutes = require('./routes/home')
+<% } %>
+const app = new Koa()
+<% if (middleware.koaRouter) { %>
+    app.use(homeRoutes.routes())
+<% } %>
+<% if (middleware.koaBody) { %>
+    app.use(bodyParser())
+<% } %>
+<% if (middleware.koaStatic) { %>
+    app.use(static(path.resolve(__dirname,'./static')))
+<% } %>
+<% if (middleware.koaViews) { %>
+    app.use(views(path.join(__dirname,"./views"),{extension:'html'}))
+<% } %>
+<% if (!middleware.koaRouter) { %>
+app.use((ctx,next)=>{
+    ctx.body = 'Hello <%= projectName %> ！！！'
+    next()
+})
+<% } %>
+
+app.listen(<%= port %>,()=>{
+    console.log(`listen to http://localhost:<%= port %>`);
+})

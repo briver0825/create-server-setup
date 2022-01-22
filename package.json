@@ -1,0 +1,31 @@
+{
+  "name": "create-server-setup",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "./bin/index.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./bin/index.js"
+  },
+  "author": "zhuxin",
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "koa",
+    "tamplate",
+    "sequelize",
+    "mysql",
+    "cli"
+  ],
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^7.1.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
+    "ora": "^5.4.1",
+    "prettier": "^2.5.1"
+  }
+}
